@@ -62,11 +62,11 @@ TELEGRAM_SYSTEM_VERSION = os.environ.get("TELEGRAM_SYSTEM_VERSION", "Linux")
 TELEGRAM_APP_VERSION = os.environ.get("TELEGRAM_APP_VERSION", "redact userbot")
 TELEGRAM_LANG_CODE = os.environ.get("TELEGRAM_LANG_CODE", "ru")
 
-ONLYSQ_URL = "https://api.onlysq.ru/ai/v2"
-ONLYSQ_KEY = _required("ONLYSQ_KEY")
-ONLYSQ_MODEL = os.environ.get("ONLYSQ_MODEL", "gpt-4o-mini")
+AI_URL = "https://api.onlysq.ru/ai/v2"
+AI_KEY = _required("AI_KEY")
+AI_MODEL = os.environ.get("AI_MODEL", "gpt-4o-mini")
 
-ONLYSQ_MODELS = [
+AI_MODELS = [
     # Anthropic Claude
     "claude-opus-4-6",
     "claude-opus-4-5",
@@ -136,7 +136,7 @@ ONLYSQ_MODELS = [
     "sonar-deep-research",
 ]
 
-ONLYSQ_IMAGE_MODELS = [
+AI_IMAGE_MODELS = [
     "gpt-image-1.5",
     "gpt-image-1",
     "gpt-image-1-mini",
@@ -148,12 +148,12 @@ ONLYSQ_IMAGE_MODELS = [
     "flux",
     "grok-2-image",
 ]
-ONLYSQ_IMAGE_MODEL = os.environ.get("ONLYSQ_IMAGE_MODEL", "gpt-image-1.5")
-ONLYSQ_VISION_MODEL = os.environ.get("ONLYSQ_VISION_MODEL", "gpt-4o")
+AI_IMAGE_MODEL = os.environ.get("AI_IMAGE_MODEL", "gpt-image-1.5")
+AI_VISION_MODEL = os.environ.get("AI_VISION_MODEL", "gpt-4o")
 
-ABUZ_URL = "https://abuzgroup.lol/v1"
-ABUZ_KEY = os.environ.get("ABUZ_KEY", "").strip()
-ABUZ_MODELS = [
+AI2_URL = "https://abuzgroup.lol/v1"
+AI2_KEY = os.environ.get("AI2_KEY", "").strip()
+AI2_MODELS = [
     "glm-5.1",
     "glm-5",
     "glm-4.7",
@@ -162,22 +162,22 @@ ABUZ_MODELS = [
 
 PROVIDERS = [
     {
-        "name": "OnlySQ",
-        "url": ONLYSQ_URL,
-        "key": ONLYSQ_KEY,
-        "models": ONLYSQ_MODELS,
-        "image_models": ONLYSQ_IMAGE_MODELS,
-        "style": "onlysq",
+        "name": "AI",
+        "url": AI_URL,
+        "key": AI_KEY,
+        "models": AI_MODELS,
+        "image_models": AI_IMAGE_MODELS,
+        "style": "nested",
     },
 ]
 
-if ABUZ_KEY:
+if AI2_KEY:
     PROVIDERS.append(
         {
-            "name": "Abuz",
-            "url": ABUZ_URL,
-            "key": ABUZ_KEY,
-            "models": ABUZ_MODELS,
+            "name": "AI2",
+            "url": AI2_URL,
+            "key": AI2_KEY,
+            "models": AI2_MODELS,
             "image_models": [],
             "style": "openai",
         }

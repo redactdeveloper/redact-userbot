@@ -9,7 +9,7 @@ from pyrogram.types import Message
 
 import providers
 import owners
-from config import ONLYSQ_MODEL, PREFIXES
+from config import AI_MODEL, PREFIXES
 
 HELP = {
     "description": "Автокоррекция грамматики в своих сообщениях",
@@ -55,7 +55,7 @@ async def _check(text: str) -> str:
         {"role": "user", "content": text},
     ]
     try:
-        answer = await providers.chat(ONLYSQ_MODEL, messages, timeout_s=30)
+        answer = await providers.chat(AI_MODEL, messages, timeout_s=30)
     except Exception:
         return "OK"
     return (answer or "").strip()

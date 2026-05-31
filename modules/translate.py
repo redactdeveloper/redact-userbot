@@ -8,7 +8,7 @@ from pyrogram.types import Message
 
 import providers
 import owners
-from config import ONLYSQ_MODEL, PREFIXES
+from config import AI_MODEL, PREFIXES
 
 HELP = {
     "description": "Перевод текста через ИИ",
@@ -25,7 +25,7 @@ async def _translate(text: str, target: str) -> str:
         f"{text}"
     )
     messages = [{"role": "user", "content": prompt}]
-    answer = await providers.chat(ONLYSQ_MODEL, messages, timeout_s=60)
+    answer = await providers.chat(AI_MODEL, messages, timeout_s=60)
     return (answer or "").strip()
 
 

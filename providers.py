@@ -44,7 +44,7 @@ async def chat(model: str, messages: list[dict], timeout_s: float = 120) -> str:
     headers = {"Authorization": f"Bearer {provider['key']}"}
     style = provider.get("style", "openai")
 
-    if style == "onlysq":
+    if style == "nested":
         url = provider["url"]
         payload = {
             "model": model,
@@ -78,7 +78,7 @@ async def image(model: str, prompt: str, size: str = "1024x1024") -> bytes:
     headers = {"Authorization": f"Bearer {provider['key']}"}
     style = provider.get("style", "openai")
 
-    if style == "onlysq":
+    if style == "nested":
         url = provider["url"]
         payload = {
             "model": model,

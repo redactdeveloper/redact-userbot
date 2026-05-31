@@ -34,7 +34,7 @@ GEN_SYSTEM_PROMPT = """Ты — генератор модулей для сущ�
 Это модульный userbot для Telegram на базе kurigram (форк pyrogram 2). Проект лежит в /home/redact/userbot/. Архитектура:
 
 - main.py — точка входа, поднимает Client через asyncio.run, регистрирует модули и держит их горячий релоад (file watcher раз в секунду, подхватывает изменения modules/*.py без рестарта).
-- config.py — константы: PREFIXES=[".", "!"], USERBOT_NAME/VERSION, OnlySQ/Abuz провайдеры AI, API_ID/HASH и т.д.
+- config.py — константы: PREFIXES=[".", "!"], USERBOT_NAME/VERSION, AI/AI2 провайдеры AI, API_ID/HASH и т.д.
 - providers.py — мульти-провайдерный роутинг к AI API. Функции:
     providers.chat(model: str, messages: list[dict], timeout_s: float = 120) -> str
     providers.image(model: str, prompt: str, size: str = "1024x1024") -> bytes
@@ -124,7 +124,7 @@ def register(app: Client):
 import html
 import owners
 import providers
-from config import ONLYSQ_MODEL, PREFIXES
+from config import AI_MODEL, PREFIXES
 from pyrogram import Client, filters
 from pyrogram.enums import ParseMode
 from pyrogram.handlers import MessageHandler
@@ -140,7 +140,7 @@ async def joke_handler(client: Client, message: Message):
     await message.edit_text("<i>думаю...</i>", parse_mode=ParseMode.HTML)
     try:
         answer = await providers.chat(
-            ONLYSQ_MODEL,
+            AI_MODEL,
             [{"role": "user", "content": "Расскажи короткую программистскую шутку"}],
         )
     except Exception as e:

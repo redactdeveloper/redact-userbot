@@ -1,8 +1,6 @@
 # Redact Userbot
 
-Private, modular Telegram userbot written in Python. It loads modules dynamically, keeps command access owner-only by default, and uses a local `.env` file for Telegram and AI provider credentials.
-
-> This repository must stay private. Userbot automation may violate platform rules depending on usage, and several modules can access local files, execute shell commands, or send messages automatically.
+Modular Telegram userbot written in Python. It loads modules dynamically, keeps command access owner-only by default, and uses a local `.env` file for Telegram and AI provider credentials.
 
 ## Features
 
@@ -17,8 +15,8 @@ Private, modular Telegram userbot written in Python. It loads modules dynamicall
 
 - Python 3.12+
 - Telegram API credentials: `API_ID` and `API_HASH`
-- OnlySQ API key for AI modules: `ONLYSQ_KEY`
-- Optional Abuz provider key: `ABUZ_KEY`
+- AI API key for AI modules: `AI_KEY`
+- Optional second AI provider key: `AI2_KEY`
 - Optional system tools:
   - `g++` for the native stats worker
   - `grim`, `grimblast`, `hyprshot`, `scrot`, `gnome-screenshot`, `spectacle`, or `maim` for screenshots
@@ -41,12 +39,12 @@ API_HASH=your_telegram_api_hash
 SESSION_NAME=userbot
 PREFIXES=.,!
 
-ONLYSQ_KEY=your_onlysq_key
-ONLYSQ_MODEL=gpt-4o-mini
-ONLYSQ_IMAGE_MODEL=gpt-image-1.5
-ONLYSQ_VISION_MODEL=gpt-4o
+AI_KEY=your_ai_key
+AI_MODEL=gpt-4o-mini
+AI_IMAGE_MODEL=gpt-image-1.5
+AI_VISION_MODEL=gpt-4o
 
-ABUZ_KEY=
+AI2_KEY=
 ```
 
 ## Running
@@ -69,17 +67,17 @@ On first launch, Pyrogram will create a local Telegram session file such as `use
 | `TELEGRAM_SYSTEM_VERSION` | No | System version shown to Telegram |
 | `TELEGRAM_APP_VERSION` | No | App version shown to Telegram |
 | `TELEGRAM_LANG_CODE` | No | Telegram language code |
-| `ONLYSQ_KEY` | Yes | Main AI provider key |
-| `ONLYSQ_MODEL` | No | Default chat model |
-| `ONLYSQ_IMAGE_MODEL` | No | Default image model |
-| `ONLYSQ_VISION_MODEL` | No | Default vision/OCR model |
-| `ABUZ_KEY` | No | Optional secondary AI provider key |
+| `AI_KEY` | Yes | Main AI provider key |
+| `AI_MODEL` | No | Default chat model |
+| `AI_IMAGE_MODEL` | No | Default image model |
+| `AI_VISION_MODEL` | No | Default vision/OCR model |
+| `AI2_KEY` | No | Optional secondary AI provider key |
 
 ## Security Notes
 
 - Keep `.env`, `*.session`, state files, and downloads out of Git.
 - Use `.owner` carefully: added owners can run protected commands.
-- `.ssh` executes shell commands on the host. Keep the repository private and restrict owners.
+- `.ssh` executes shell commands on the host. Restrict owners carefully.
 - `.automsg`, `.spam`, `.autoreplay`, `.grammatic`, `.online`, `.logdelete`, `bio`, and `rate` can automate account behavior. Use them conservatively.
 - If a key or session was ever exposed, revoke it at the provider or in Telegram and create a new one.
 
@@ -143,9 +141,7 @@ These files can appear while the bot runs and are intentionally ignored:
 
 # Redact Userbot [RU]
 
-Приватный модульный Telegram userbot на Python. Он динамически загружает модули из `modules/`, по умолчанию разрешает команды только владельцу аккаунта и хранит ключи в локальном `.env`.
-
-> Репозиторий должен оставаться приватным. Userbot-автоматизация может нарушать правила платформы в зависимости от сценария, а отдельные модули умеют читать локальные файлы, выполнять shell-команды и автоматически отправлять сообщения.
+Модульный Telegram userbot на Python. Он динамически загружает модули из `modules/`, по умолчанию разрешает команды только владельцу аккаунта и хранит ключи в локальном `.env`.
 
 ## Возможности
 
@@ -160,8 +156,8 @@ These files can appear while the bot runs and are intentionally ignored:
 
 - Python 3.12+
 - Telegram credentials: `API_ID` и `API_HASH`
-- OnlySQ API key для AI-модулей: `ONLYSQ_KEY`
-- Опционально Abuz provider key: `ABUZ_KEY`
+- AI API key для AI-модулей: `AI_KEY`
+- Опционально второй AI provider key: `AI2_KEY`
 - Опциональные системные утилиты:
   - `g++` для нативного worker статистики
   - `grim`, `grimblast`, `hyprshot`, `scrot`, `gnome-screenshot`, `spectacle` или `maim` для скриншотов
@@ -184,12 +180,12 @@ API_HASH=your_telegram_api_hash
 SESSION_NAME=userbot
 PREFIXES=.,!
 
-ONLYSQ_KEY=your_onlysq_key
-ONLYSQ_MODEL=gpt-4o-mini
-ONLYSQ_IMAGE_MODEL=gpt-image-1.5
-ONLYSQ_VISION_MODEL=gpt-4o
+AI_KEY=your_ai_key
+AI_MODEL=gpt-4o-mini
+AI_IMAGE_MODEL=gpt-image-1.5
+AI_VISION_MODEL=gpt-4o
 
-ABUZ_KEY=
+AI2_KEY=
 ```
 
 ## Запуск
@@ -212,17 +208,17 @@ python main.py
 | `TELEGRAM_SYSTEM_VERSION` | Нет | Версия системы для Telegram |
 | `TELEGRAM_APP_VERSION` | Нет | Версия приложения для Telegram |
 | `TELEGRAM_LANG_CODE` | Нет | Язык Telegram |
-| `ONLYSQ_KEY` | Да | Ключ основного AI-провайдера |
-| `ONLYSQ_MODEL` | Нет | Модель чата по умолчанию |
-| `ONLYSQ_IMAGE_MODEL` | Нет | Модель изображений по умолчанию |
-| `ONLYSQ_VISION_MODEL` | Нет | Vision/OCR модель по умолчанию |
-| `ABUZ_KEY` | Нет | Ключ дополнительного AI-провайдера |
+| `AI_KEY` | Да | Ключ основного AI-провайдера |
+| `AI_MODEL` | Нет | Модель чата по умолчанию |
+| `AI_IMAGE_MODEL` | Нет | Модель изображений по умолчанию |
+| `AI_VISION_MODEL` | Нет | Vision/OCR модель по умолчанию |
+| `AI2_KEY` | Нет | Ключ дополнительного AI-провайдера |
 
 ## Безопасность
 
 - Не коммить `.env`, `*.session`, state-файлы и `downloads/`.
 - Аккуратно используй `.owner`: добавленные владельцы получают доступ к защищенным командам.
-- `.ssh` выполняет shell-команды на хосте. Оставляй repo приватным и не выдавай owner-доступ лишним людям.
+- `.ssh` выполняет shell-команды на хосте. Не выдавай owner-доступ лишним людям.
 - `.automsg`, `.spam`, `.autoreplay`, `.grammatic`, `.online`, `.logdelete`, `bio` и `rate` автоматизируют поведение аккаунта. Используй осторожно.
 - Если ключ или сессия когда-либо были раскрыты, отзови их у провайдера или в Telegram и создай новые.
 

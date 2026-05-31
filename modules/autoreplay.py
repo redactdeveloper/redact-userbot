@@ -12,7 +12,7 @@ from pyrogram.types import Message
 
 import providers
 import owners
-from config import ONLYSQ_MODEL, PREFIXES
+from config import AI_MODEL, PREFIXES
 
 HELP = {
     "description": "ИИ-автоответчик на пинги (с контекстом чата)",
@@ -142,7 +142,7 @@ def _current_model() -> str:
                 return m
         except Exception:
             pass
-    return ONLYSQ_MODEL
+    return AI_MODEL
 
 
 _state = _load_state()

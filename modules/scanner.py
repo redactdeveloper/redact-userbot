@@ -9,7 +9,7 @@ from pyrogram.types import Message
 
 import providers
 import owners
-from config import ONLYSQ_VISION_MODEL, PREFIXES
+from config import AI_VISION_MODEL, PREFIXES
 
 HELP = {
     "description": "OCR: распознать текст с картинки через vision-модель",
@@ -36,7 +36,7 @@ async def _ocr(image_bytes: bytes) -> str:
             ],
         }
     ]
-    text = await providers.chat(ONLYSQ_VISION_MODEL, messages, timeout_s=120)
+    text = await providers.chat(AI_VISION_MODEL, messages, timeout_s=120)
     return (text or "").strip()
 
 
@@ -79,7 +79,7 @@ async def scanner_handler(client: Client, message: Message):
         text = text[:TG_LIMIT] + "..."
 
     out = (
-        f"<b>Scanner ({html.escape(ONLYSQ_VISION_MODEL)}):</b>\n"
+        f"<b>Scanner ({html.escape(AI_VISION_MODEL)}):</b>\n"
         f"<blockquote>{html.escape(text)}</blockquote>"
     )
     await message.edit_text(out, parse_mode=ParseMode.HTML)

@@ -11,13 +11,13 @@ from pyrogram.types import Message
 
 import providers
 import owners
-from config import ONLYSQ_IMAGE_MODEL, ONLYSQ_MODEL, PREFIXES
+from config import AI_IMAGE_MODEL, AI_MODEL, PREFIXES
 
 HELP = {
     "description": "ИИ через мульти-провайдерный роутинг",
     "commands": {
         ".ai <text>": "задать вопрос (или реплай)",
-        ".image <text>": f"сгенерировать картинку ({ONLYSQ_IMAGE_MODEL})",
+        ".image <text>": f"сгенерировать картинку ({AI_IMAGE_MODEL})",
         ".prompt <text>": "задать системный промпт",
         ".prompt 0": "сбросить системный промпт",
         ".model": "показать список моделей",
@@ -46,7 +46,7 @@ _state = _load_state()
 
 
 def _current_model() -> str:
-    return _state.get("model") or ONLYSQ_MODEL
+    return _state.get("model") or AI_MODEL
 
 
 def _current_prompt() -> str:
@@ -123,7 +123,7 @@ async def image_handler(client: Client, message: Message):
 
     await message.edit_text("<i>генерирую...</i>", parse_mode=ParseMode.HTML)
     try:
-        png = await providers.image(ONLYSQ_IMAGE_MODEL, prompt)
+        png = await providers.image(AI_IMAGE_MODEL, prompt)
     except aiohttp.ClientResponseError as e:
         await message.edit_text(
             f"<b>Ошибка API:</b> <code>{e.status} {e.message}</code>",
@@ -146,7 +146,7 @@ async def image_handler(client: Client, message: Message):
     except Exception:
         pass
     caption = (
-        f"<b>{html.escape(ONLYSQ_IMAGE_MODEL)}</b>\n"
+        f"<b>{html.escape(AI_IMAGE_MODEL)}</b>\n"
         f"<code>{html.escape(prompt[:800])}</code>"
     )
     await client.send_photo(
