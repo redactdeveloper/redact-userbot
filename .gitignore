@@ -1,0 +1,42 @@
+.env
+.env.*
+!.env.example
+
+# Telegram / Pyrogram sessions
+*.session
+*.session-journal
+*.session-shm
+*.session-wal
+*.revoked.*
+
+# Runtime state and local user data
+.*_state.json
+.stats_cache.json
+.owners.json
+.prefixc_aliases.json
+downloads/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Native build output
+bin/
+
+# Frontend dependencies and build output
+node_modules/
+dist/
+.angular/
+
+# Unrelated local side projects kept near the bot
+sli international/
+gov severiya/
+privet/
+modules/*.html
+
+# Local OS/editor files
+.DS_Store
+Thumbs.db
+*.swp
