@@ -268,3 +268,5 @@ python main.py
 - `downloads/`
 - `bin/`
 - `__pycache__/`
+
+Showcase .weather <img width="447" height="246" alt="image" src="https://github.com/user-attachments/assets/542ef001-8a28-43b8-82b5-0eb1ddc5bf4e" />
