@@ -1,4 +1,11 @@
 # Redact Userbot
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Telegram](https://img.shields.io/badge/Telegram-26A5E4?style=for-the-badge&logo=telegram&logoColor=white)
+![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white)
+![C++](https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)
+![WTFPL](https://img.shields.io/badge/License-WTFPL-brightgreen?style=for-the-badge)
+![Pyrogram](https://img.shields.io/badge/Pyrogram-2CA5E0?style=for-the-badge&logoColor=white)
+
 
 Modular Telegram userbot written in Python. It loads modules dynamically, keeps command access owner-only by default, and uses a local `.env` file for Telegram and AI provider credentials.
 
