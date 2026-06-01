@@ -2,7 +2,7 @@
 .env.*
 !.env.example
 
-# Telegram / Pyrogram sessions
+# Telegram / Pyrogram sessions / Телеграм-Сессии
 *.session
 *.session-journal
 *.session-shm
@@ -16,13 +16,13 @@
 .prefixc_aliases.json
 downloads/
 
-# Python
+# Python / Питон
 __pycache__/
 *.py[cod]
 .venv/
 venv/
 
-# Native build output
+# Native build output / c++ оутпут
 bin/
 
 # Frontend dependencies and build output
