@@ -183,7 +183,7 @@ if AI2_KEY:
         }
     )
 
-BIO_TEMPLATE = "@redactdevbot / apichecker.dev | {ts}"
+BIO_TEMPLATE = "get you | {ts}"
 BIO_TIME_FORMAT = "%d.%m.%Y %H:%M"
 BIO_INTERVAL = 60
 
